@@ -1,4 +1,4 @@
 ﻿param([Switch]$get)
-if($get)
-    {
-        Get-Disk}
+if ($get) {
+    Get-Disk
+}
