@@ -1,5 +1,12 @@
-$path = 'C:\Users\Behbuds\Desktop\Powershell\Tasks\Task9\Array.csv'
-$services = Get-Service |Where-Object {$PSItem.Name -like "w*" -and $PSItem.Status -eq 'running'}
+Param(
+    [Parameter(Mandatory = $true)]
+    [String]$Path,
+    [Parameter(Mandatory = $true)]
+    [String]$NameLike,
+    [Parameter(Mandatory = $true)]
+    [String]$StatusEq
+)
+$services = Get-Service | Where-Object { $PSItem.Name -like $NameLike -and $PSItem.Status -eq $StatusEq }
 $array = @()
 foreach ($service in $services) {
     $name = $service.name
@@ -10,4 +17,4 @@ foreach ($service in $services) {
     }
     $array += New-Object -TypeName psobject -Property $hash
 }
-$array | Export-Csv -Path $path -NoTypeInformation
+$array | Export-Csv -Path $Path -NoTypeInformation
