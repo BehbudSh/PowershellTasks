@@ -3,14 +3,11 @@ param (
     [string]$newVariable)
     
 $variableName = $newVariable.TrimStart().TrimEnd() 
-if (!$variableName) {Write-Host  'Value is null or empty'}
-# elseif ($NewVariable -match '^ *$') {
-#    Write-Host 'Variable value is whitespace'
-    
-# }
+if (!$variableName) {
+    Write-Host  'Value is null or empty'
+}
 
 elseif ($variableName) {
     Write-Host 'Value is not null'
-    Write-Host "Variable value is $variableName"
-    
+    Write-Host "Variable value is $variableName" 
 }
